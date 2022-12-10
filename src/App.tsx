@@ -8,9 +8,9 @@ import './App.css'
 
 function App() {
     return (
-        <div className="App">
+        <div className="App bg-gray-50">
             <Header/>
-            <div className="flex-1 flex justify-center items-center">
+            <div className="flex-1 flex justify-center items-center p-4 sm:p-6">
                 <Routes>
                     <Route path="/" element={<Home/>}/>
                     <Route path="/translate" element={<Translate/>}/>
