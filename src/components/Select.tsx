@@ -10,7 +10,6 @@ interface SelectInterface {
     setSelected: (selected: string) => void
 }
 
-
 export default function Select({label, options, selected, setSelected}: SelectInterface): ReactElement {
     return (
         <Listbox value={selected} onChange={setSelected}>

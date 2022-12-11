@@ -12,7 +12,7 @@ export default function Home(): ReactElement {
                                 className="relative overflow-hidden rounded-full py-1.5 px-4 text-sm leading-6 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
                   <span className="text-gray-600">
                     Link to our devpost and future plans.{' '}
-                      <a href="#" className="font-semibold text-emerald-600">
+                      <a href="https://devpost.com/software/eloquent-nv1xek" className="font-semibold text-emerald-600">
                       <span className="absolute inset-0" aria-hidden="true"/>
                       Read more
                     </a>
@@ -31,7 +31,7 @@ export default function Home(): ReactElement {
                                          className="inline-block rounded-lg bg-emerald-600 px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-emerald-600 hover:bg-emerald-700 hover:ring-emerald-700">
                                     Get started
                                 </NavLink>
-                                <a href="#"
+                                <a href="https://www.youtube.com/watch?v=kqi33T8O4Lw"
                                    className="inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 text-gray-900 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
                                     Live demo
                                 </a>
