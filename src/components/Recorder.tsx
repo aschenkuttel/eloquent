@@ -10,16 +10,14 @@ interface RecorderInterface {
     setRecordedText: (result: string) => void,
     isTranslating: boolean,
     setIsTranslating: (state: boolean) => void,
+    censor: boolean,
     isNotSupported: boolean
 }
 
 export default function Recorder({
-                                     sourceLanguage,
-                                     targetLanguage,
-                                     setRecordedText,
-                                     isTranslating,
-                                     setIsTranslating,
-                                     isNotSupported
+                                     sourceLanguage, targetLanguage,
+                                     setRecordedText, isTranslating,
+                                     setIsTranslating, censor, isNotSupported
                                  }: RecorderInterface): ReactElement {
     const [isRecording, setIsRecording] = useState<boolean>(false);
     const mediaRecorder = useRef<MediaRecorder | null>(null)
@@ -46,8 +44,8 @@ export default function Recorder({
 
         mediaRecorder.current.onstop = async () => {
             try {
-                const blob = new Blob(chunks.current, {type: "audio/ogg; codecs=opus"});
                 setIsTranslating(true)
+                const blob = new Blob(chunks.current, {type: "audio/ogg; codecs=opus"});
                 await translate(blob)
             } catch (error) {
                 console.log(error)
@@ -95,7 +93,8 @@ export default function Recorder({
 
         const res = await assembly.post("/transcript", {
             audio_url: url,
-            language_code: sourceLanguage
+            language_code: sourceLanguage,
+            filter_profanity: censor
         })
         return res.data.id
     }
@@ -134,8 +133,6 @@ export default function Recorder({
         } else {
             setRecordedText(result.text)
         }
-
-        setIsTranslating(false)
     }
 
     const recordContent = () => {

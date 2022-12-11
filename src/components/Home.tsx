@@ -11,7 +11,7 @@ export default function Home(): ReactElement {
                             <div
                                 className="relative overflow-hidden rounded-full py-1.5 px-4 text-sm leading-6 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
                   <span className="text-gray-600">
-                    Announcing our next round of funding.{' '}
+                    Link to our devpost and future plans.{' '}
                       <a href="#" className="font-semibold text-emerald-600">
                       <span className="absolute inset-0" aria-hidden="true"/>
                       Read more
@@ -21,12 +21,10 @@ export default function Home(): ReactElement {
                         </div>
                         <div>
                             <h1 className="text-4xl font-bold tracking-tight sm:text-center sm:text-6xl">
-                                Data to enrich your online business
+                                Translate anything effortlessly, simply by voice.
                             </h1>
                             <p className="mt-6 text-lg leading-8 text-gray-600 sm:text-center">
-                                Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat
-                                commodo. Elit sunt
-                                amet fugiat veniam occaecat fugiat aliqua.
+                                Eloquent enables never before seen speech to text translation, powered by AssemblyAI and Deepl. Speak naturally and immediately receive a translated text-file of what you just said.
                             </p>
                             <div className="mt-8 flex gap-x-4 sm:justify-center">
                                 <NavLink to="/translate"
