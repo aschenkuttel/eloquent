@@ -14,12 +14,6 @@ export default function Translate(): ReactElement {
     const [sourceLanguage, setSourceLanguage] = useState("")
     const [targetLanguage, setTargetLanguage] = useState("")
 
-    if (navigator.mediaDevices) {
-        console.log("YES")
-    } else {
-        console.log("NO")
-    }
-
     useEffect(() => {
         (async () => {
             if (!recordedText) return
@@ -62,7 +56,8 @@ export default function Translate(): ReactElement {
                               targetLanguage={targetLanguage}
                               setRecordedText={setRecordedText}
                               isTranslating={isTranslating}
-                              setIsTranslating={setIsTranslating}/>
+                              setIsTranslating={setIsTranslating}
+                              isNotSupported={!navigator.mediaDevices}/>
                 </div>
 
                 <div>

@@ -9,7 +9,8 @@ interface RecorderInterface {
     targetLanguage: string,
     setRecordedText: (result: string) => void,
     isTranslating: boolean,
-    setIsTranslating: (state: boolean) => void
+    setIsTranslating: (state: boolean) => void,
+    isNotSupported: boolean
 }
 
 export default function Recorder({
@@ -17,7 +18,8 @@ export default function Recorder({
                                      targetLanguage,
                                      setRecordedText,
                                      isTranslating,
-                                     setIsTranslating
+                                     setIsTranslating,
+                                     isNotSupported
                                  }: RecorderInterface): ReactElement {
     const [isRecording, setIsRecording] = useState<boolean>(false);
     const mediaRecorder = useRef<MediaRecorder | null>(null)
@@ -65,7 +67,6 @@ export default function Recorder({
     }
 
     const upload = async (blob: Blob) => {
-
         const assembly = axios.create({
             baseURL: "https://api.assemblyai.com/v2",
             headers: {
@@ -154,7 +155,7 @@ export default function Recorder({
         } else {
             return (
                 <Fragment>
-                    <MicrophoneIcon className="h-5 w-5" aria-hidden="true"/>
+                    <MicrophoneIcon className="relative h-5 w-5" aria-hidden="true"/>
                     Record
                 </Fragment>
             )
@@ -164,12 +165,14 @@ export default function Recorder({
     return (
         <button
             type="button"
-            disabled={!sourceLanguage || !targetLanguage || sourceLanguage === targetLanguage.toLowerCase() || isTranslating}
+            disabled={!sourceLanguage || !targetLanguage ||
+                sourceLanguage === targetLanguage.toLowerCase() ||
+                isTranslating || isNotSupported}
             onClick={isRecording ? stop : record}
             className={clsx("w-full h-auto inline-flex items-center gap-2 rounded-lg border border-transparent",
                 "bg-emerald-500 px-4 py-4 text-white shadow-sm hover:bg-emerald-600 focus:outline-none focus:ring-2",
                 "focus:ring-emerald-500 focus:ring-offset-2 disabled:bg-gray-300 disabled:ring-gray-200",
-                "sm:py-0 sm:w-auto",
+                "sm:py-0 sm:w-auto animate-ping-low",
                 isRecording && "bg-rose-500 focus:ring-rose-400 hover:bg-rose-600")}>
             {recordContent()}
         </button>

@@ -1,5 +1,5 @@
-import {ReactElement, useState} from "react"
-import {ClipboardIcon} from "@heroicons/react/24/outline"
+import {ReactElement, useState} from "react";
+import {ClipboardIcon} from "@heroicons/react/24/solid";
 import Info from "./Info";
 
 interface OutputInterface {
